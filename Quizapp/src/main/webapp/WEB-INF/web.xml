@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+    
+    <!-- Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Servlet Mappings -->
+    <servlet>
+        <servlet-name>quizServlet</servlet-name>
+        <servlet-class>com.example.quizapp.QuizServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>quizServlet</servlet-name>
+        <url-pattern>/quiz/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>quizTakeServlet</servlet-name>
+        <servlet-class>com.example.quizapp.QuizTakeServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>quizTakeServlet</servlet-name>
+        <url-pattern>/quiz/take</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>quizSubmitServlet</servlet-name>
+        <servlet-class>com.example.quizapp.QuizSubmitServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>quizSubmitServlet</servlet-name>
+        <url-pattern>/quiz/submit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>quizResultsServlet</servlet-name>
+        <servlet-class>com.example.quizapp.QuizResultsServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>quizResultsServlet</servlet-name>
+        <url-pattern>/quiz/finish</url-pattern>
+    </servlet-mapping>
+
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
+
+    <!-- Filter Configuration (Optional) -->
+    <!-- If you have any filters like authentication, logging, etc. -->
+    <filter>
+        <filter-name>authFilter</filter-name>
+        <filter-class>com.example.filters.AuthenticationFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
+        <url-pattern>/quiz/*</url-pattern>
+    </filter-mapping>
+
+</web-app>
